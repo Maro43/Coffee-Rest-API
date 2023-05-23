@@ -1,6 +1,6 @@
 package com.spring.boot.project01.controller;
 
-import com.spring.boot.project01.dto.Coffee;
+import com.spring.boot.project01.dto.CoffeeDto;
 import com.spring.boot.project01.service.CoffeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +17,14 @@ public class CoffeeController {
 
     private final CoffeeService coffeeService;
 
-    @GetMapping
-    public List<Coffee> get() {
+    @GetMapping("/getlist")
+    public List<CoffeeDto> getList() {
         return coffeeService.getCoffee();
     }
 
     @PostMapping
-    public Coffee post(Coffee coffee) {
-        return coffee;
+    public CoffeeDto post(CoffeeDto coffeeDto) {
+        return coffeeService.saveCoffee(coffeeDto);
     }
 
 }
