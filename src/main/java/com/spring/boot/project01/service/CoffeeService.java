@@ -6,8 +6,13 @@ import java.util.List;
 
 public interface CoffeeService {
 
+    CoffeeDto getById(Long id);
+
     List<CoffeeDto> getCoffee();
 
     CoffeeDto saveCoffee(CoffeeDto coffeeDto);
 
+    CoffeeDto update(CoffeeDto coffeeDto);
+
+    CoffeeDto delete(Long id);
 }

@@ -1,6 +1,7 @@
 package com.spring.boot.project01.entity;
 
-import javax.persistence.*;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "coffee")
