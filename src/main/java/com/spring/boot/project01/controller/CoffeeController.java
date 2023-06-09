@@ -25,6 +25,11 @@ public class CoffeeController {
         return coffeeService.getCoffee();
     }
 
+    @GetMapping("/getbysize")
+    public List<CoffeeDto> getCoffeeType(String size){
+        return coffeeService.getCoffeeSize(size);
+    }
+
     @PostMapping
     public CoffeeDto post(CoffeeDto coffeeDto) {
         return coffeeService.saveCoffee(coffeeDto);

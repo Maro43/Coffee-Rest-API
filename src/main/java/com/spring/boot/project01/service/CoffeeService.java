@@ -10,6 +10,8 @@ public interface CoffeeService {
 
     List<CoffeeDto> getCoffee();
 
+    List<CoffeeDto> getCoffeeSize(String size);
+
     CoffeeDto saveCoffee(CoffeeDto coffeeDto);
 
     CoffeeDto update(CoffeeDto coffeeDto);

@@ -35,6 +35,12 @@ public class CoffeeServiceImpl implements CoffeeService {
     }
 
     @Override
+    public List<CoffeeDto> getCoffeeSize(String size) {
+        return coffeeRepository.findBySize(size);
+
+    }
+
+    @Override
     public CoffeeDto saveCoffee(CoffeeDto coffeeDto) {
         CoffeeEntity coffeeEntity = new CoffeeEntity(coffeeDto.getType(), coffeeDto.getSize(), coffeeDto.getIntensity());
         CoffeeEntity save = coffeeRepository.save(coffeeEntity);

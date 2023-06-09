@@ -37,13 +37,13 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>7.0.1.Final</version> <!-- Replace with the latest version -->
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
         </dependency>
 
 
@@ -67,6 +67,19 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <configuration>
+                    <url>${flyway-maven-plugin.url}</url>
+                    <driver>org.postgresql.Driver</driver>
+                    <user>${flyway-maven-plugin.user}</user>
+                    <password>${flyway-maven-plugin.password}</password>
+                    <schemas>
+                        <schema>test1</schema>
+                    </schemas>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
@@ -76,19 +89,6 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <configuration>
-                    <url>${flyway-maven-plugin.url}</url>
-                    <driver>org.postgresql.Driver</driver>
-                    <user>${flyway-maven-plugin.user}</user>
-                    <password>${flyway-maven-plugin.password}</password>
-                    <schemas>
-                        <schema>public</schema>
-                    </schemas>
                 </configuration>
             </plugin>
         </plugins>
