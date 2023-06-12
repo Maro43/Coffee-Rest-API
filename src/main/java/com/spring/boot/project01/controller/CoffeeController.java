@@ -16,7 +16,7 @@ public class CoffeeController {
 
 
     @GetMapping("/getbyid")
-    public CoffeeDto getById(Long id){
+    public CoffeeDto getById(Long id) {
         return coffeeService.getById(id);
     }
 
@@ -26,7 +26,7 @@ public class CoffeeController {
     }
 
     @GetMapping("/getbysize")
-    public List<CoffeeDto> getCoffeeType(String size){
+    public List<CoffeeDto> getCoffeeType(String size) {
         return coffeeService.getCoffeeSize(size);
     }
 
@@ -36,13 +36,13 @@ public class CoffeeController {
     }
 
     @PutMapping
-    public CoffeeDto update(CoffeeDto coffeeDto){
+    public CoffeeDto update(CoffeeDto coffeeDto) {
         return coffeeService.update(coffeeDto);
     }
 
     @DeleteMapping
-    public CoffeeDto delete(Long id){
-        return coffeeService.delete(id);
+    public void delete(Long id) {
+        coffeeService.delete(id);
     }
 
 }

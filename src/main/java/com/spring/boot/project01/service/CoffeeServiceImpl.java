@@ -19,24 +19,21 @@ public class CoffeeServiceImpl implements CoffeeService {
     @Override
     public CoffeeDto getById(Long id) {
         CoffeeEntity coffeeEntity = coffeeRepository.findById(id).orElseThrow();
-        return new CoffeeDto(coffeeEntity.getId(), coffeeEntity.getType(), coffeeEntity.getSize(), coffeeEntity.getIntensity());
+        return new CoffeeDto(coffeeEntity);
     }
 
     @Override
     public List<CoffeeDto> getCoffee() {
         return coffeeRepository.findAll().stream()
-                .map(coffeeEntity -> new CoffeeDto(
-                        coffeeEntity.getId(),
-                        coffeeEntity.getType(),
-                        coffeeEntity.getSize(),
-                        coffeeEntity.getIntensity()
-                ))
+                .map(CoffeeDto::new)
                 .toList();
     }
 
     @Override
     public List<CoffeeDto> getCoffeeSize(String size) {
-        return coffeeRepository.findBySize(size);
+        return coffeeRepository.findBySize(size).stream()
+                .map(CoffeeDto::new)
+                .toList();
 
     }
 
@@ -44,7 +41,7 @@ public class CoffeeServiceImpl implements CoffeeService {
     public CoffeeDto saveCoffee(CoffeeDto coffeeDto) {
         CoffeeEntity coffeeEntity = new CoffeeEntity(coffeeDto.getType(), coffeeDto.getSize(), coffeeDto.getIntensity());
         CoffeeEntity save = coffeeRepository.save(coffeeEntity);
-        return new CoffeeDto(save.getId(), save.getType(), save.getSize(), save.getIntensity());
+        return new CoffeeDto(save);
     }
 
 
@@ -54,15 +51,14 @@ public class CoffeeServiceImpl implements CoffeeService {
         coffeeEntity.setSize(coffeeDto.getSize());
         coffeeEntity.setType(coffeeDto.getType());
         coffeeEntity.setIntensity(coffeeDto.getIntensity());
-        coffeeRepository.save(coffeeEntity);
-        return new CoffeeDto(coffeeDto.getId(), coffeeEntity.getType(), coffeeEntity.getSize(), coffeeEntity.getIntensity());
+        CoffeeEntity save = coffeeRepository.save(coffeeEntity);
+        return new CoffeeDto(save);
     }
 
     @Override
-    public CoffeeDto delete(Long id) {
+    public void delete(Long id) {
         CoffeeEntity coffeeEntity = coffeeRepository.findById(id).orElseThrow();
         coffeeRepository.deleteById(id);
-        return new CoffeeDto(coffeeEntity.getId(), coffeeEntity.getType(), coffeeEntity.getSize(), coffeeEntity.getIntensity());
     }
 
 }

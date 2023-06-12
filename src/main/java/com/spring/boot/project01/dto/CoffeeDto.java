@@ -1,5 +1,6 @@
 package com.spring.boot.project01.dto;
 
+import com.spring.boot.project01.entity.CoffeeEntity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,12 +15,10 @@ public class CoffeeDto {
     private final String size;
     private final String intensity;
 
-
-    public CoffeeDto(Long id, String type, String size, String intensity) {
-        this.id = id;
-        this.type = type;
-        this.size = size;
-        this.intensity = intensity;
-
+    public CoffeeDto(CoffeeEntity coffeeEntity) {
+        this.id = coffeeEntity.getId();
+        this.type = coffeeEntity.getType();
+        this.size = coffeeEntity.getSize();
+        this.intensity = coffeeEntity.getIntensity();
     }
 }

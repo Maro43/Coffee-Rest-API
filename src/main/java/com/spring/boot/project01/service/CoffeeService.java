@@ -16,5 +16,5 @@ public interface CoffeeService {
 
     CoffeeDto update(CoffeeDto coffeeDto);
 
-    CoffeeDto delete(Long id);
+    void delete(Long id);
 }
