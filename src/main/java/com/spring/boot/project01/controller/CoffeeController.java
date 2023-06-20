@@ -9,7 +9,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/")
+@RequestMapping("/coffee")
 public class CoffeeController {
 
     private final CoffeeService coffeeService;

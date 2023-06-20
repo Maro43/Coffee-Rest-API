@@ -73,6 +73,7 @@
                     <url>${flyway-maven-plugin.url}</url>
                     <driver>org.postgresql.Driver</driver>
                     <user>${flyway-maven-plugin.user}</user>
+                    <cleanDisabled>false</cleanDisabled>
                     <password>${flyway-maven-plugin.password}</password>
                     <schemas>
                         <schema>test1</schema>
