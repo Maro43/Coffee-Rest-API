@@ -15,18 +15,13 @@ import org.springframework.stereotype.Service;
 public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerJpaRepository customerJpaRepository;
-private final CoffeeJpaRepository coffeeJpaRepository;
+    private final CoffeeJpaRepository coffeeJpaRepository;
 
     @Override
     public CustomerSaveDto getCustomer(Long id) {
         CustomerEntity customerEntity = customerJpaRepository.findById(id).orElseThrow();
         return new CustomerSaveDto(customerEntity);
     }
-
-//    @Override
-//    public CustomerSaveDto saveCustomer(CustomerSaveDto customerDto) {
-//        return null;
-//    }
 
     @Override
     public CustomerSaveDto saveCustomer(CustomerSaveDto customerSaveDto, Long coffeeId) {

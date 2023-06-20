@@ -17,4 +17,5 @@ public class CustomerSaveDto {
         this.firstName = customerEntity.getFirstName();
         this.lastName = customerEntity.getLastName();
     }
+
 }

@@ -7,7 +7,6 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "customer")
 public class CustomerEntity {
@@ -23,5 +22,10 @@ public class CustomerEntity {
     @ManyToOne
     @JoinColumn(name = "coffee_id")
     private CoffeeEntity favouriteCoffee;
+
+    public CustomerEntity(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
 }
